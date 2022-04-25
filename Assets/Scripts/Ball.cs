@@ -22,14 +22,13 @@ public class Ball : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        // 레이어가 Prop인 것만 가져옴 
+        // 레이어가 Prop인 것만 가져옴
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius, whatIsProp);
 
         for (int i = 0; i < colliders.Length; i++)
         {
             Rigidbody targetRigidbody = colliders[i].GetComponent<Rigidbody>();
             targetRigidbody.AddExplosionForce(explosionForce, transform.position, explosionRadius);
-
 
             Prop targetProp = colliders[i].GetComponent<Prop>();
 
@@ -43,6 +42,8 @@ public class Ball : MonoBehaviour
         explosionParticle.Play();
         explosionAudio.Play();
 
+        // GameManager.instance.OnBallDestroy();
+
         Destroy(explosionParticle.gameObject, explosionParticle.main.duration);
         Destroy(gameObject);
     }
@@ -52,8 +53,8 @@ public class Ball : MonoBehaviour
          // Ball과 Prop의 거리
         Vector3 explosionToTarget = targetPosition - transform.position;
         float distance = explosionToTarget.magnitude;
-        
-        // 폭발 반경 중심과의 거리 
+
+        // 폭발 반경 중심과의 거리
         float edgeToCenterDistance = explosionRadius - distance;
 
         // 중심에서 멀수록 데미지 경감
@@ -62,5 +63,9 @@ public class Ball : MonoBehaviour
         damage = Mathf.Max(0, damage);
 
         return damage;
+    }
+
+    private void OnDestroy() {
+        GameManager.instance.OnBallDestory();
     }
 }

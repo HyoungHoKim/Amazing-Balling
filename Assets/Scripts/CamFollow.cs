@@ -10,6 +10,7 @@ public class CamFollow : MonoBehaviour
         Tracking // 발사된 포탄을 추적하는 형태
     }
 
+    // 프로퍼티
     private State state
     {
         set

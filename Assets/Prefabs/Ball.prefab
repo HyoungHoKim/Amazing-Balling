@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatIsProp:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   explosionParticle: {fileID: 2512088160738555026}
   explosionAudio: {fileID: 5815262377103397904}
   maxDamage: 100
@@ -142,6 +142,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2555665485170693673}
     m_Modifications:
+    - target: {fileID: 3012841510721621669, guid: d5ef0f0a18a9cc749a64239856fa330a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3099334084539996299, guid: d5ef0f0a18a9cc749a64239856fa330a,
         type: 3}
       propertyPath: m_RootOrder

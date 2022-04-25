@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class BallShooter : MonoBehaviour
 {
+    public CamFollow cam;
+
     public Rigidbody ball;
     public Transform firePos;
     public Slider powerSlider;
@@ -30,7 +32,7 @@ public class BallShooter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        chargeSpeed = (maxForce - minForce) / chargingTime;    
+        chargeSpeed = (maxForce - minForce) / chargingTime;
     }
 
     // Update is called once per frame
@@ -38,7 +40,7 @@ public class BallShooter : MonoBehaviour
     {
         if (fired)
             return;
-        
+
         if (currentForce >= maxForce && !fired)
         {
             currentForce = maxForce;
@@ -72,5 +74,7 @@ public class BallShooter : MonoBehaviour
         shootingAudio.Play();
 
         currentForce = minForce;
+
+        cam.SetTarget(ballInstance.transform, CamFollow.State.Tracking);
     }
 }

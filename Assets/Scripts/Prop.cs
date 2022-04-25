@@ -20,6 +20,8 @@ public class Prop : MonoBehaviour
             AudioSource explosionAudio = instance.GetComponent<AudioSource>();
             explosionAudio.Play();
 
+            GameManager.instance.AddScore(score);
+
             Destroy(instance.gameObject, instance.main.duration);
             gameObject.SetActive(false);
         }
